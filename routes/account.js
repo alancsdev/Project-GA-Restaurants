@@ -7,6 +7,6 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 router.get('/', ensureLoggedIn, accountController.index);
 router.get('/logout', accountController.logout);
 
-router.post('/account/:id/address', ensureLoggedIn, accountController.create);
+router.post('/:id/address', ensureLoggedIn, accountController.create);
 
 module.exports = router;

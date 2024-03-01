@@ -188,7 +188,7 @@ fullName.substring(primeiroEspaco + 1); %>
       Address
       <div class="account-list">
         <h6>Personal address</h6>
-
+        <form action="/account/<%= user._id%>/address" method="POST">
         <div class="account-data">
           <div class="form-data-address">
             <label class="first-name" for="first-name">Address</label>
@@ -198,6 +198,7 @@ fullName.substring(primeiroEspaco + 1); %>
               id="address"
               placeholder="Your address"
               value="<%= user.address %>"
+              name="address"
             />
           </div>
 
@@ -206,13 +207,12 @@ fullName.substring(primeiroEspaco + 1); %>
               <button><a href="/logout">Log out</a></button>
             </div>
 
-            <div class="buttons-form-right">
-              <button>Discard changes</button>
-              <form action="/account/<%= user._id%>/address" method="POST">
+            <div class="buttons-form-right">              
                 <button>Save changes</button>
-              </form>
+              
             </div>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

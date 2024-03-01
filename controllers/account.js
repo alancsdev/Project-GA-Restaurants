@@ -15,27 +15,16 @@ async function logout(req, res) {
 }
 
 async function create(req, res) {
-  console.log(req.params);
   try {
-    // Encontre o usuário com base no ID fornecido nos parâmetros da requisição
     const user = await User.findById(req.params.id);
 
-    // Atualize os dados do usuário com base nos dados fornecidos no corpo da requisição
-    // (certifique-se de que req.body contenha os campos corretos para atualizar)
-    user.address = req.body.address; // Exemplo: assumindo que você tem um campo 'address' no corpo da requisição
+    user.address = req.body.address;
 
-    // Salve as alterações no banco de dados
     await user.save();
 
-    // Redirecione o usuário para a rota '/oi/' após a conclusão
-    res.redirect('/oi/');
+    res.redirect('/account');
   } catch (error) {
-    // Se ocorrer um erro, responda com um status de erro e uma mensagem de erro adequada
-    console.error('Erro ao salvar o endereço:', error);
-    res
-      .status(500)
-      .send(
-        'Erro ao salvar o endereço. Por favor, tente novamente mais tarde.'
-      );
+    console.error('Error saving the address:', error);
+    res.status(500).send('Error saving address. Please try again later.');
   }
 }
