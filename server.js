@@ -7,6 +7,7 @@ var session = require('express-session');
 var passport = require('passport');
 var methodOverride = require('method-override');
 var mongoStore = require('connect-mongo');
+const bodyParser = require('body-parser');
 
 require('dotenv').config();
 // connect to the database with AFTER the config vars are processed
@@ -31,6 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+app.use(bodyParser.json());
 
 app.use(
   session({
@@ -49,6 +51,20 @@ app.use(passport.session());
 // Add this middleware BELOW passport middleware
 app.use(function (req, res, next) {
   res.locals.user = req.user;
+  next();
+});
+app.post('/location', (req, res) => {
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
+
+  // Process location data as needed
+  console.log('Received location:', { latitude, longitude });
+  req.locationData = { latitude, longitude };
+  next();
+});
+
+app.use(function (req, res, next) {
+  res.locals.location = req.location;
   next();
 });
 

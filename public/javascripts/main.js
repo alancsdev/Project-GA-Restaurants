@@ -21,3 +21,32 @@ function handleItemClick(item) {
     userAddress.style.display = 'none';
   }
 }
+
+navigator.geolocation.getCurrentPosition(function (position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+
+  // Enviar dados de localização para o servidor
+  fetch('/location', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ latitude, longitude }),
+  })
+    .then((response) => {
+      // Lidar com a resposta do servidor
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Erro ao obter dados dos restaurantes');
+    })
+    .then((data) => {
+      // Manipular os dados dos restaurantes recebidos do servidor
+      console.log('Dados dos restaurantes:', data);
+      // Aqui você pode atualizar a página ou fazer qualquer outra coisa com os dados
+    })
+    .catch((error) => {
+      console.error('Erro:', error);
+    });
+});
