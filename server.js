@@ -8,6 +8,7 @@ var passport = require('passport');
 var methodOverride = require('method-override');
 var mongoStore = require('connect-mongo');
 const bodyParser = require('body-parser');
+const axios = require('axios');
 
 require('dotenv').config();
 // connect to the database with AFTER the config vars are processed
@@ -88,5 +89,24 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+let config = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: 'https://api.yelp.com/v3/businesses/search?location=HK&categories=restaurants',
+  headers: {
+    Authorization:
+      'Bearer sOETYfHBSv8BY_SKA8Bjf5cqtOfm0IGmke-ROchPULdGYBoyyFQaQMX9Qzo6ds2ex7oqehYJoVwzSmWTS0ytJZ6HzjpmSG8oBCp_PMrKu3wgRUeRoKNuyiJu043hZXYx',
+  },
+};
+
+axios
+  .request(config)
+  .then((response) => {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 module.exports = app;
