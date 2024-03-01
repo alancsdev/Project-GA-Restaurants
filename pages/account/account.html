@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projeto HTML - Home Page</title>
+
+    <link rel="shortcut icon" href="favicon.png" />
+
+    <link rel="stylesheet" href="../../shared.css" />
+    <link rel="stylesheet" href="account.css" />
+  </head>
+
+  <body>
+    <header class="main-header">
+      <nav class="main-nav">
+        <ul class="main-nav__items">
+          <div class="main-nav__item_left">
+            <li class="main-nav__item">
+              <div class="logo-nav">
+                <img class="food" src="../../logo/food.png" alt="Food" />
+                <img
+                  class="delivery"
+                  src="../../logo/delivery.png"
+                  alt="Delivery"
+                />
+              </div>
+            </li>
+            <li class="main-nav__item">
+              <input type="search" id="search" placeholder="Search" />
+            </li>
+          </div>
+          <div class="main-nav__item_right">
+            <div class="main-nav-hide-mobile">
+              <li class="main-nav__item"><a href="#">Restaurants</a></li>
+              <li class="main-nav__item"><a href="#">Deals</a></li>
+              <li class="main-nav__item deals"></li>
+              <li class="main-nav__item"><a href="#">My orders</a></li>
+            </div>
+            <li class="main-nav__item">
+              <a href="#">
+                <div class="main-nav__item-cart">
+                  <div class="badge">4</div>
+                </div></a
+              >
+            </li>
+            <li class="main-nav__item">
+              <a href="#"><div class="main-nav__item-cart nav-image"></div></a>
+            </li>
+            <li class="main-nav__item toggle">
+              <div class="divider-toggle"></div>
+              <a href="">
+                <div class="main-nav__toggle">
+                  <span class="toggle-button__bar"></span>
+                  <span class="toggle-button__bar"></span>
+                  <span class="toggle-button__bar"></span>
+                </div>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div class="navbarjump"></div>
+    <section id="account-settings">
+      <div class="account-settings-area">
+        <div class="settings-title">
+          Settings
+          <div class="settings-list">
+            <ul class="settings-items">
+              <li class="settings-item settings-item-selected">
+                <div class="settings-item-icon"></div>
+                <a href=""
+                  ><div class="settings-item-description">
+                    <p>Account</p>
+                    <p>Personal Information</p>
+                  </div></a
+                >
+              </li>
+              <li class="settings-item">
+                <div class="settings-item-icon"></div>
+                <a href=""
+                  ><div class="settings-item-description">
+                    <p>Address</p>
+                    <p>Shippings addresses</p>
+                  </div></a
+                >
+              </li>
+              <li class="settings-item">
+                <div class="settings-item-icon"></div>
+                <a href=""
+                  ><div class="settings-item-description">
+                    <p>Payment method</p>
+                    <p>Connected credit cards</p>
+                  </div></a
+                >
+              </li>
+              <li class="settings-item">
+                <div class="settings-item-icon"></div>
+                <a href=""
+                  ><div class="settings-item-description">
+                    <p>Security</p>
+                    <p>Password, 2FA</p>
+                  </div></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="account-title">
+          Account
+          <div class="account-list">
+            <form action="#">
+              <h6>Personal information</h6>
+              <p>Avatar</p>
+              <div class="account-avatar-options">
+                <div class="account-avatar"></div>
+                <button class="account-btn-change">Change</button>
+                <button class="account-btn-remove">Remove</button>
+              </div>
+              <div class="account-data">
+                <div class="form-data">
+                  <label class="first-name" for="first-name">First name</label>
+                  <input
+                    class="input-first-name"
+                    type="text"
+                    id="first-name"
+                    placeholder="Jane"
+                    required
+                  />
+                </div>
+                <div class="form-data">
+                  <label class="last-name" for="last-name">First name</label>
+                  <input
+                    class="input-last-name"
+                    type="text"
+                    id="last-name"
+                    placeholder="Jane"
+                    required
+                  />
+                </div>
+                <div class="form-data">
+                  <label class="email" for="email">Email</label>
+                  <input
+                    class="input-email"
+                    type="email"
+                    id="email"
+                    placeholder="jane.robertson@example.com"
+                    required
+                  />
+                </div>
+                <div class="form-data">
+                  <label class="phone-number" for="phone-number"
+                    >Phone number</label
+                  >
+                  <input
+                    class="input-phone-number"
+                    type="number"
+                    id="phone-number"
+                    placeholder="(217) 555-0113"
+                    required
+                  />
+                </div>
+                <h6 class="email-notification">Email notifications</h6>
+                <div class="account-data-notifications">
+                  <div class="account-data-checkbox">
+                    <input
+                      type="checkbox"
+                      id="new-deals"
+                      name="new-deals"
+                      value="New deals"
+                      checked
+                    />
+                    <label for="new-deals">New deals</label>
+                  </div>
+                  <div class="account-data-checkbox">
+                    <input
+                      type="checkbox"
+                      id="new-restaurants"
+                      name="new-restaurants"
+                      value="New restaurants"
+                      checked
+                    />
+                    <label for="new-restaurants">New restaurants</label>
+                  </div>
+                  <div class="account-data-checkbox">
+                    <input
+                      type="checkbox"
+                      id="order-statuses"
+                      name="order-statuses"
+                      value="Order-statuses"
+                      checked
+                    />
+                    <label for="order-statuses">Order statuses</label>
+                  </div>
+                  <div class="account-data-checkbox">
+                    <input
+                      type="checkbox"
+                      id="password-changes"
+                      name="password-changes"
+                      value="Password changes"
+                      checked
+                    />
+                    <label for="password-changes">Password changes</label>
+                  </div>
+                  <div class="account-data-checkbox">
+                    <input
+                      type="checkbox"
+                      id="special-offers"
+                      name="special-offers"
+                      value="Special offers"
+                      checked
+                    />
+                    <label for="special-offers">Special offers</label>
+                  </div>
+                  <div class="account-data-checkbox">
+                    <input
+                      type="checkbox"
+                      id="newsletter"
+                      name="newsletter"
+                      value="Newsletter"
+                      checked
+                    />
+                    <label for="newsletter">Newsletter</label>
+                  </div>
+                </div>
+                <div class="buttons-form">
+                  <div class="buttons-form-left"><button>Log out</button></div>
+                  <div class="buttons-form-right">
+                    <button>Discard changes</button
+                    ><button>Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+
+<!-- 1440 x 860
+  parte do formulario login
+  640x860
+  parte da midia
+  800x860 -->

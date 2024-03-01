@@ -1,0 +1,222 @@
+<%- include('../partials/header') %> <% const fullName = user.name; %> <% const
+primeiroEspaco = fullName.indexOf(" "); %> <% const firstName =
+fullName.substring(0, primeiroEspaco); %> <% const lastName =
+fullName.substring(primeiroEspaco + 1); %>
+
+<section id="account-settings">
+  <div class="account-settings-area">
+    <div class="settings-title">
+      Settings
+      <div class="settings-list">
+        <ul class="settings-items">
+          <li class="settings-item settings-item-selected">
+            <div class="settings-item-icon"></div>
+            <a href="#" onclick="handleItemClick(this)"
+              ><div class="settings-item-description">
+                <p>Account</p>
+                <p>Personal Information</p>
+              </div></a
+            >
+          </li>
+          <li class="settings-item">
+            <div class="settings-item-icon"></div>
+            <a href="#" onclick="handleItemClick(this)"
+              ><div class="settings-item-description">
+                <p>Address</p>
+                <p>Shippings addresses</p>
+              </div></a
+            >
+          </li>
+          <li class="settings-item">
+            <div class="settings-item-icon"></div>
+            <a href="#" onclick="handleItemClick(this)"
+              ><div class="settings-item-description">
+                <p>Payment method</p>
+                <p>Connected credit cards</p>
+              </div></a
+            >
+          </li>
+          <li class="settings-item">
+            <div class="settings-item-icon"></div>
+            <a href="#" onclick="handleItemClick(this)"
+              ><div class="settings-item-description">
+                <p>Security</p>
+                <p>Password, 2FA</p>
+              </div></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="account-title content">
+      Account
+      <div class="account-list">
+        <form action="#">
+          <h6>Personal information</h6>
+          <p>Avatar</p>
+          <div class="account-avatar-options">
+            <div class="account-avatar">
+              <img src="<%= user.avatar %>" alt="" />
+            </div>
+            <button class="account-btn-change">Change</button>
+            <button class="account-btn-remove">Remove</button>
+          </div>
+          <div class="account-data">
+            <div class="form-data">
+              <label class="first-name" for="first-name">First name</label>
+              <input
+                class="input-first-name"
+                type="text"
+                id="first-name"
+                placeholder="Jane"
+                required
+                value="<%= firstName %>"
+              />
+            </div>
+            <div class="form-data">
+              <label class="last-name" for="last-name">Last name</label>
+              <input
+                class="input-last-name"
+                type="text"
+                id="last-name"
+                placeholder="Jane"
+                value="<%= lastName %>"
+                required
+              />
+            </div>
+            <div class="form-data">
+              <label class="email" for="email">Email</label>
+              <input
+                class="input-email"
+                type="email"
+                id="email"
+                placeholder="jane.robertson@example.com"
+                value="<%= user.email %>"
+                required
+              />
+            </div>
+            <div class="form-data">
+              <label class="phone-number" for="phone-number"
+                >Phone number</label
+              >
+              <input
+                class="input-phone-number"
+                type="number"
+                id="phone-number"
+                placeholder="(217) 555-0113"
+              />
+            </div>
+            <h6 class="email-notification">Email notifications</h6>
+            <div class="account-data-notifications">
+              <div class="account-data-checkbox">
+                <input
+                  type="checkbox"
+                  id="new-deals"
+                  name="new-deals"
+                  value="New deals"
+                  checked
+                />
+                <label for="new-deals">New deals</label>
+              </div>
+              <div class="account-data-checkbox">
+                <input
+                  type="checkbox"
+                  id="new-restaurants"
+                  name="new-restaurants"
+                  value="New restaurants"
+                  checked
+                />
+                <label for="new-restaurants">New restaurants</label>
+              </div>
+              <div class="account-data-checkbox">
+                <input
+                  type="checkbox"
+                  id="order-statuses"
+                  name="order-statuses"
+                  value="Order-statuses"
+                  checked
+                />
+                <label for="order-statuses">Order statuses</label>
+              </div>
+              <div class="account-data-checkbox">
+                <input
+                  type="checkbox"
+                  id="password-changes"
+                  name="password-changes"
+                  value="Password changes"
+                  checked
+                />
+                <label for="password-changes">Password changes</label>
+              </div>
+              <div class="account-data-checkbox">
+                <input
+                  type="checkbox"
+                  id="special-offers"
+                  name="special-offers"
+                  value="Special offers"
+                  checked
+                />
+                <label for="special-offers">Special offers</label>
+              </div>
+              <div class="account-data-checkbox">
+                <input
+                  type="checkbox"
+                  id="newsletter"
+                  name="newsletter"
+                  value="Newsletter"
+                  checked
+                />
+                <label for="newsletter">Newsletter</label>
+              </div>
+            </div>
+            <div class="buttons-form">
+              <div class="buttons-form-left">
+                <button><a href="/logout">Log out</a></button>
+              </div>
+
+              <div class="buttons-form-right">
+                <button onclick="event.preventDefault();">
+                  Discard changes</button
+                ><button onclick="event.preventDefault();">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="account-title-address content">
+      Address
+      <div class="account-list">
+        <h6>Personal address</h6>
+
+        <div class="account-data">
+          <div class="form-data-address">
+            <label class="first-name" for="first-name">Address</label>
+            <input
+              class="input-first-name"
+              type="text"
+              id="address"
+              placeholder="Your address"
+              value="<%= user.address %>"
+            />
+          </div>
+
+          <div class="buttons-form">
+            <div class="buttons-form-left">
+              <button><a href="/logout">Log out</a></button>
+            </div>
+
+            <div class="buttons-form-right">
+              <button>Discard changes</button>
+              <form action="/account/<%= user._id%>/address" method="POST">
+                <button>Save changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

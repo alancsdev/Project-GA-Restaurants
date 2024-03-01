@@ -1,0 +1,492 @@
+#sale {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.sales {
+  margin: 0 auto;
+  width: 91.67%;
+  height: 38.875rem;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 700px) {
+  .sales {
+    height: 11.75rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .sales {
+    width: 77.08%;
+  }
+}
+
+.sale-left {
+  width: 100%;
+  background: #f3f4ff;
+  border-radius: 16px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.875rem;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 700px) {
+  .sale-left {
+    width: 48.65%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.sale-right {
+  width: 100%;
+  background: #fff3ed;
+  border-radius: 16px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 700px) {
+  .sale-right {
+    width: 48.65%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+  }
+}
+
+.sale-image {
+  /* width: 16.25rem; */
+  width: 53.7%;
+  height: 100%;
+  background: url(../../images/cupcake.png) no-repeat 50%;
+  transform: scale(1.5);
+  background-size: cover;
+  order: 1;
+  align-self: center;
+}
+
+@media only screen and (min-width: 700px) {
+  .sale-image {
+    order: 0;
+    transform: scale(1);
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .sale-image {
+    background: url(../../images/cupcake.png) no-repeat 0%;
+    background-size: cover;
+  }
+}
+
+.sale-right .sale-image {
+  background: url(../../images/burger.png) no-repeat 50%;
+  background-size: cover;
+  transform: scale(1.5);
+}
+
+@media only screen and (min-width: 700px) {
+  .sale-right .sale-image {
+    transform: scale(1);
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .sale-right .sale-image {
+    background: url(../../images/burger.png) no-repeat 0% 25%;
+    background-size: cover;
+    transform: scale(1.2);
+  }
+}
+
+.sale-description {
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 36.49%;
+}
+
+@media only screen and (min-width: 700px) {
+  .sale-description {
+    display: block;
+    padding-left: 1rem;
+  }
+}
+
+.sale-description-title {
+  margin: 0;
+  padding: 1rem 0px 0px 0px;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  color: #2b2b43;
+}
+
+@media only screen and (min-width: 700px) {
+  .sale-description-title {
+    padding: 24px 0px 0px 0px;
+    width: unset;
+    height: unset;
+  }
+}
+
+.sale-description-discount {
+  margin: 0;
+  padding: 8px 0px 0px 0px;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 56px;
+  letter-spacing: 0.1px;
+  color: #4e60ff;
+}
+
+@media only screen and (min-width: 700px) {
+}
+
+.sale-description-description {
+  padding: 1rem 1rem 0px 0px;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.875rem;
+  letter-spacing: 0.1px;
+  color: #83859c;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+@media only screen and (min-width: 700px) {
+  .sale-description-description {
+    padding: 0;
+    display: block;
+    height: unset;
+    margin-top: -5px;
+  }
+}
+
+@media only screen and (min-width: 1240px) {
+  .sale-description-description {
+    padding-top: 36px;
+  }
+}
+
+#category {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.category-items {
+  margin: 0 auto;
+  width: 91.67%;
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+@media only screen and (min-width: 768px) {
+  .category-items {
+    width: 77.08%;
+  }
+}
+
+.category-item {
+  text-align: center;
+  padding-top: 0.875rem;
+  width: 30.3%;
+  height: 5rem;
+  background: #ffffff;
+  border: 1px solid #edeef2;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 576px) {
+  .category-item {
+    width: 14.41%;
+  }
+}
+
+.category-item:hover {
+  cursor: pointer;
+  border: 1px solid #697bff;
+  background: #f8f9ff;
+}
+
+.category-item p {
+  margin: 0.375rem;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.812rem;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+}
+
+.selected {
+  background: #f3f4ff;
+  border: 2px solid #4e60ff;
+  border-radius: 16px;
+}
+
+.selected > p {
+  color: #4e60ff;
+}
+
+#restaurants {
+  width: 100%;
+}
+
+.restaurants-nearby-title {
+  margin: 0 auto;
+  width: 91.67%;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 28px;
+  letter-spacing: 0.1px;
+  color: #2b2b43;
+}
+
+@media only screen and (min-width: 768px) {
+  .restaurants-nearby-title {
+    width: 77.08%;
+  }
+}
+.restaurants-nearby-title h5 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.restaurants-list {
+  margin: 0 auto;
+  width: 91.67%;
+}
+
+@media only screen and (min-width: 768px) {
+  .restaurants-list {
+    width: 77.08%;
+  }
+}
+
+.restaurants-items {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  list-style: none;
+}
+
+@media only screen and (min-width: 900px) {
+  .restaurants-items {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.restaurants-item {
+  width: 100%;
+  /* max-width: 21.875rem; */
+  background: #ffffff;
+  border: 1px solid #edeef2;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1.875rem;
+}
+
+@media only screen and (min-width: 900px) {
+  .restaurants-item {
+    width: 31.53%;
+    /* max-width: 21.875rem; */
+    background: #ffffff;
+    border: 1px solid #edeef2;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1.875rem;
+  }
+}
+
+.restaurants-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurants1-image {
+  position: relative;
+  height: 10rem;
+  background: url(../../cards/img.png) center/cover no-repeat;
+}
+
+.restaurants2-image {
+  position: relative;
+  height: 10rem;
+  background: url(../../cards/img-2.png) center/cover no-repeat;
+}
+.restaurants3-image {
+  position: relative;
+  height: 10rem;
+  background: url(../../cards/img-1.png) center/cover no-repeat;
+}
+.restaurants4-image {
+  position: relative;
+  height: 10rem;
+  background: url(../../cards/img-3.png) center/cover no-repeat;
+}
+.restaurants5-image {
+  position: relative;
+  height: 10rem;
+  background: url(../../cards/img-4.png) center/cover no-repeat;
+}
+.restaurants6-image {
+  position: relative;
+  height: 10rem;
+  background: url(../../cards/img-5.png) center/cover no-repeat;
+}
+
+.restaurants-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-name {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem 6px 1rem;
+}
+
+.restaurant-name a {
+  text-decoration: none;
+}
+
+.restaurant-name h6 {
+  margin: 0;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #2b2b43;
+}
+
+.restaurant-name img:hover {
+  fill: red;
+}
+
+.restaurant-timer-value {
+  padding-left: 1rem;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 16px;
+  color: #83859c;
+}
+
+.restaurant-timer-value p {
+  margin: 0px 0px 14px 0px;
+}
+
+.restaurant-timer-value img {
+  width: 10px;
+  height: 10px;
+}
+
+.restaurant-type {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.type-food {
+  width: 70px;
+  height: 24px;
+  background: #edeef2;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.type-food img {
+  width: 12px;
+  height: 12px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.type-food p {
+  margin: 0;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 16px;
+  color: #545563;
+}
+
+.restaurant-featured {
+  position: absolute;
+  top: 0;
+  right: 0%;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.68rem;
+  line-height: 16px;
+  color: #ffffff;
+  background: #4e60ff;
+  border-radius: 0px 16px;
+  padding: 8px 16px 8px 16px;
+}
+
+.restaurant-badge {
+  position: relative;
+}
+
+.restaurant-badge-number {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.62rem;
+  color: #ffffff;
+
+  text-align: center;
+  width: 16px;
+  height: 16px;
+  background: #4e60ff;
+  border: 1.5px solid #ffffff;
+  border-radius: 6px;
+  position: absolute;
+  top: -20%;
+  right: -20%;
+}

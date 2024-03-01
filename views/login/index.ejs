@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projeto HTML - Login Page</title>
+
+    <link rel="shortcut icon" href="favicon.png" />
+
+    <link rel="stylesheet" href="/stylesheets/shared.css" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+
+  <body>
+    <section id="login">
+      <div class="form-login">
+        <div class="logo">
+          <img class="food" src="/logo/food.png" alt="Food" />
+          <img class="delivery" src="/logo/delivery.png" alt="Delivery" />
+        </div>
+        <div class="content-login">
+          <h1 class="text-login">Login</h1>
+          <p class="text-form">
+            Sign in with your data that you entered during your registration.
+          </p>
+          <form action="/auth/google">
+            <div class="form-email">
+              <label class="email" for="email">Email</label>
+              <input
+                class="input-email"
+                type="email"
+                id="email"
+                placeholder="name@example.com"
+                
+              />
+            </div>
+            <div class="form-password">
+              <label class="password" for="password">Password</label>
+              <input
+                class="input-password"
+                type="password"
+                id="password"
+                placeholder="min. 8 characters"
+                
+              />
+            </div>
+            <div class="form-checkbox">
+              <input type="checkbox" id="keep-login" required />
+              <label for="keep-login">Keep me logged in </label>
+            </div>
+            <button type="submit" class="button-login">Login</button>
+          </form>
+          <button type="submit" class="button-forgot-password">
+            Forgot password
+          </button>
+          <div class="create-account">
+            Don’t have an account? <a href="#">&nbsp;Sign up</a>
+          </div>
+        </div>
+      </div>
+      <div class="media-login">
+        <div class="media-content">
+          <img src="/images/media.png" alt="Reviews" />
+        </div>
+
+        <div class="media-content2">
+          <h3>Leave reviews for all meals</h3>
+          <p>
+            Lorem ipsum dolor sit amet, magna scaevola his ei. Cum te paulo
+            probatus molestiae, eirmod assentior eum ne, et omnis antiopam mel.
+          </p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

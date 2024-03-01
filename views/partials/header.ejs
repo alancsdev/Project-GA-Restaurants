@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GA Project Restaurants</title>
+
+    <link rel="shortcut icon" href="favicon.png" />
+
+    <link rel="stylesheet" href="/stylesheets/shared.css" />
+    <link rel="stylesheet" href="/stylesheets/account.css" />
+    <link rel="stylesheet" href="/stylesheets/home.css" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <script src="../../javascripts/main.js" defer></script>
+  </head>
+
+  <body>
+    <header class="main-header">
+      <nav class="main-nav">
+        <ul class="main-nav__items">
+          <div class="main-nav__item_left">
+            <li class="main-nav__item">
+              <div class="logo-nav">
+                <img class="food" src="/logo/food.png" alt="Food" />
+                <img class="delivery" src="/logo/delivery.png" alt="Delivery" />
+              </div>
+            </li>
+            <li class="main-nav__item">
+              <input type="search" id="search" placeholder="Search" />
+            </li>
+          </div>
+          <div class="main-nav__item_right">
+            <div class="main-nav-hide-mobile">
+              <li class="main-nav__item">
+                <a href="/restaurants">Restaurants</a>
+              </li>
+              <li class="main-nav__item"><a href="#">Deals</a></li>
+              <li class="main-nav__item deals"></li>
+              <li class="main-nav__item"><a href="#">My orders</a></li>
+            </div>
+            <li class="main-nav__item">
+              <a href="#">
+                <div class="main-nav__item-cart">
+                  <div class="badge">4</div>
+                </div></a
+              >
+            </li>
+            <li class="main-nav__item">
+              <a href="/account"
+                ><div class="main-nav__item-cart nav-image">
+                  <img
+                    src="<%= user.avatar %>"
+                    alt="avatar"
+                    referrerpolicy="no-referrer"
+                  /></div
+              ></a>
+            </li>
+            <li class="main-nav__item toggle">
+              <div class="divider-toggle"></div>
+              <a href="/account">
+                <div class="main-nav__toggle">
+                  <span class="toggle-button__bar"></span>
+                  <span class="toggle-button__bar"></span>
+                  <span class="toggle-button__bar"></span>
+                </div>
+              </a>
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div class="navbarjump"></div>
+  </body>
+</html>
