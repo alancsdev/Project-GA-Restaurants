@@ -339,10 +339,17 @@
   flex-direction: column;
 }
 
-.restaurants1-image {
+.restaurants-image {
   position: relative;
   height: 10rem;
-  background: url(../../cards/img.png) center/cover no-repeat;
+  /* background: url(../../cards/img.png) center/cover no-repeat; */
+}
+
+.restaurants-image img {
+  width: 100%;
+  position: relative;
+  height: 10rem;
+  /* background: url(../../cards/img.png) center/cover no-repeat; */
 }
 
 .restaurants2-image {
@@ -424,10 +431,12 @@
 .restaurant-type {
   display: flex;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .type-food {
-  width: 70px;
+  /* width: 70px; */
+  min-width: 70px;
   height: 24px;
   background: #edeef2;
   border-radius: 100px;
@@ -435,6 +444,8 @@
   align-items: center;
   justify-content: center;
   margin-left: 1rem;
+  padding: 0 5px 0 5px;
+  margin-bottom: 5px;
 }
 
 .type-food img {
