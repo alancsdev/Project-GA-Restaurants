@@ -5,5 +5,5 @@ module.exports = {
 };
 
 async function index(req, res) {
-  res.render('restaurants/index');
+  res.render('order/index');
 }

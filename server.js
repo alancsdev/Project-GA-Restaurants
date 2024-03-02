@@ -19,6 +19,7 @@ const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const restaurantsRouter = require('./routes/restaurants');
 const accountRouter = require('./routes/account');
+const orderRouter = require('./routes/order');
 
 var app = express();
 
@@ -53,25 +54,12 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
-app.post('/location', (req, res) => {
-  const latitude = req.body.latitude;
-  const longitude = req.body.longitude;
-
-  // Process location data as needed
-  console.log('Received location:', { latitude, longitude });
-  req.locationData = { latitude, longitude };
-  next();
-});
-
-app.use(function (req, res, next) {
-  res.locals.location = req.location;
-  next();
-});
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/restaurants', restaurantsRouter);
 app.use('/account', accountRouter);
+app.use('/order', orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
