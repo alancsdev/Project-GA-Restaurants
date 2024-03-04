@@ -8,7 +8,7 @@ async function index(req, res) {
   const random2 = 0;
   axios
     .get(
-      'https://api.yelp.com/v3/businesses/search?location=HK&categories=restaurants&limit=15',
+      'https://api.yelp.com/v3/businesses/search?location=SYDNEY&categories=restaurants&limit=15',
       {
         headers: {
           Authorization:
@@ -27,31 +27,20 @@ async function index(req, res) {
         random1: Math.floor(Math.random() * (30 - 10 + 1)) + 10,
         random2: Math.floor(Math.random() * (60 - 40 + 1)) + 40,
         featured: Math.floor(Math.random() * 2),
+        cart: Math.floor(Math.random() * 5),
       }));
-      console.log(restaurants);
-      res.render('restaurants/index', { user: req.user, restaurants });
+
+      const totalCart = restaurants.reduce((accumulator, currentRestaurant) => {
+        return accumulator + currentRestaurant.cart;
+      }, 0);
+      res.render('restaurants/index', {
+        user: req.user,
+        restaurants,
+        totalCart,
+      });
     })
     .catch((error) => {
       console.error('Error getting data from Yelp API:', error);
       res.render('error', { error: 'Error getting data from Yelp API' });
     });
-  // let data = null;
-  // let config = {
-  //   method: 'get',
-  //   maxBodyLength: Infinity,
-  //   url: 'https://api.yelp.com/v3/businesses/search?location=HK&categories=restaurants&limit=15',
-  //   headers: {
-  //     Authorization:
-  //       'Bearer sOETYfHBSv8BY_SKA8Bjf5cqtOfm0IGmke-ROchPULdGYBoyyFQaQMX9Qzo6ds2ex7oqehYJoVwzSmWTS0ytJZ6HzjpmSG8oBCp_PMrKu3wgRUeRoKNuyiJu043hZXYx',
-  //   },
-  // };
-  // axios
-  //   .request(config)
-  //   .then((response) => {
-  //     data = JSON.stringify(response.data);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  // res.render('restaurants/index', { user: req.user, data });
 }

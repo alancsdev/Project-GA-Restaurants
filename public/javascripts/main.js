@@ -2,7 +2,6 @@ function handleItemClick(item) {
   const items = document.querySelectorAll('.settings-item');
   const user = document.querySelector('.account-title');
   const userAddress = document.querySelector('.account-title-address');
-  console.log(items);
   items.forEach(function (item) {
     item.classList.remove('settings-item-selected');
   });
@@ -24,72 +23,110 @@ function handleItemClick(item) {
 
 document.addEventListener('DOMContentLoaded', function () {
   const menuList = document.getElementById('menu-list');
-  const pedidoList = document.getElementById('pedido-list');
+  const orderList = document.getElementById('order-list');
   const totalSpan = document.getElementById('total');
-  const orderItems = {};
+  const orderItems = [];
 
   const menuItems = [
-    { name: 'Hamburguer Simples', price: 10 },
-    { name: 'Hamburguer Duplo', price: 15 },
-    { name: 'Batata Frita', price: 5 },
-    { name: 'Refrigerante', price: 3 },
+    {
+      description: 'Hamburguer Simples',
+      price: 10,
+    },
+    { description: 'Hamburguer Duplo', price: 15 },
+    { description: 'Batata Frita', price: 5 },
+    { description: 'Refrigerante', price: 3 },
   ];
 
-  // Função para adicionar um item ao pedido
-  function addItem(name, price) {
-    if (orderItems[name]) {
-      orderItems[name].amount++;
-      orderItems[name].element.textContent = `${name} x${
-        orderItems[name].amount
-      } - R$${(orderItems[name].amount * price).toFixed(2)}`;
+  function addItem(item) {
+    const existingItem = orderItems.find(
+      (orderItem) => orderItem.description === item.description
+    );
+    if (existingItem) {
+      existingItem.amount++;
+      existingItem.element.textContent = `${item.description} x${
+        existingItem.amount
+      } - $${(existingItem.amount * item.price).toFixed(2)}`;
     } else {
-      const itemPedido = document.createElement('li');
-      itemPedido.textContent = `${name} x1 - R$${price.toFixed(2)}`;
-      pedidoList.appendChild(itemPedido);
-      orderItems[name] = { amount: 1, element: itemPedido };
+      const itemOrdered = document.createElement('li');
+      itemOrdered.textContent = `${item.description} x1 - $${item.price.toFixed(
+        2
+      )}`;
+      orderList.appendChild(itemOrdered);
+      orderItems.push({ ...item, amount: 1, element: itemOrdered });
     }
 
-    // Atualiza o total
     const totalAtual = parseFloat(totalSpan.textContent);
-    totalSpan.textContent = (totalAtual + price).toFixed(2);
+    totalSpan.textContent = (totalAtual + item.price).toFixed(2);
+
+    console.log(orderItems);
   }
 
-  // Função para remover um item do pedido
-  function removeItem(name, price) {
-    if (orderItems[name]) {
-      orderItems[name].amount--;
-      if (orderItems[name].amount === 0) {
-        orderItems[name].element.remove();
-        delete orderItems[name];
+  function removeItem(description, price) {
+    const index = orderItems.findIndex(
+      (item) => item.description === description
+    );
+    if (index !== -1) {
+      orderItems[index].amount--;
+      if (orderItems[index].amount === 0) {
+        orderItems[index].element.remove();
+        orderItems.splice(index, 1);
       } else {
-        orderItems[name].element.textContent = `${name} x${
-          orderItems[name].amount
-        } - R$${(orderItems[name].amount * price).toFixed(2)}`;
+        orderItems[index].element.textContent = `${description} x${
+          orderItems[index].amount
+        } - $${(orderItems[index].amount * price).toFixed(2)}`;
       }
 
-      // Atualiza o total
       const totalAtual = parseFloat(totalSpan.textContent);
       totalSpan.textContent = (totalAtual - price).toFixed(2);
     }
   }
 
-  // Gera a lista de itens do menu dinamicamente
   menuItems.forEach((item) => {
     const listItem = document.createElement('li');
-    listItem.innerHTML = `
-      <span>${item.name} - R$${item.price.toFixed(2)}</span>
-      <button class="btn-add">+</button>
-      <button class="btn-remove">-</button>
+    const divWrapper = document.createElement('div');
+    divWrapper.classList.add('item-details');
+    divWrapper.innerHTML = `
+      <div class="item-details-span">
+        <span>${item.description} - $${item.price.toFixed(2)}</span>
+      </div>
+      <div class="item-details-buttons">
+        <button class="btn-add">+</button>
+        <button class="btn-remove">-</button>
+      </div>
     `;
+    listItem.appendChild(divWrapper);
     menuList.appendChild(listItem);
 
-    // Adiciona eventos de clique aos botões
-    listItem.querySelector('.btn-add').addEventListener('click', () => {
-      addItem(item.name, item.price);
+    divWrapper.querySelector('.btn-add').addEventListener('click', () => {
+      addItem(item);
     });
 
-    listItem.querySelector('.btn-remove').addEventListener('click', () => {
-      removeItem(item.name, item.price);
+    divWrapper.querySelector('.btn-remove').addEventListener('click', () => {
+      removeItem(item.description, item.price);
     });
   });
+
+  document
+    .getElementById('btn-submit-order')
+    .addEventListener('click', function () {
+      fetch('/order/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ orderItems }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Erro ao adicionar pedido');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log('Pedido adicionado com sucesso:', data);
+        })
+        .catch((error) => {
+          console.error('Erro:', error);
+        });
+    });
 });

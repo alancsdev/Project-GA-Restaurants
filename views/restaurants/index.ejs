@@ -1,10 +1,10 @@
-<%- include('../partials/header') %>
+<%- include('../partials/header', { totalCart }) %>
 <section id="sale">
   <div class="sales">
     <div class="sale-left">
       <div class="sale-image"></div>
       <div class="sale-description">
-        <h5 class="sale-description-title">All deserts</h5>
+        <h5 class="sale-description-title">All desserts</h5>
         <h2 class="sale-description-discount">20% OFF</h2>
         <p class="sale-description-description">Dessert</p>
       </div>
@@ -66,8 +66,15 @@
           </div>
           <div class="restaurants-description">
             <div class="restaurant-name">
-              <a href="/order"><h6><%= r.name %></h6></a>
-              <a href=""><img src="/svg/shopping_bag.svg" alt="" /></a>
+              <a href="/order/<%= r.name%>"><h6><%= r.name %></h6></a>
+              <div class="restaurant-badge">
+                <a href=""
+                  ><img src="../../svg/shopping_bag.svg" alt=""
+                /></a>
+                <% if (r.cart !== 0) { %>
+                <div class="restaurant-badge-number"><%= r.cart %></div>
+                <% }; %>
+              </div>
             </div>
             <div class="restaurant-timer-value">
               <p>

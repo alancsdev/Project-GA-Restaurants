@@ -4,6 +4,8 @@ const router = express.Router();
 const orderController = require('../controllers/orders');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
-router.get('/', ensureLoggedIn, orderController.index);
+router.get('/:name', ensureLoggedIn, orderController.index);
+
+router.post('/add', ensureLoggedIn, orderController.create);
 
 module.exports = router;
