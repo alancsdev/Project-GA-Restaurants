@@ -4,18 +4,19 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const random1 = 0;
-  const random2 = 0;
+  let LINKSEARCH =
+    'https://api.yelp.com/v3/businesses/search?location=SYDNEY&categories=restaurants&limit=15';
+  console.log(req.body);
+
+  if (req.body.latitude && req.body.longitude !== undefined) {
+    LINKSEARCH = `https://api.yelp.com/v3/businesses/search?latitude=${req.body.latitude}&longitude=${req.body.longitude}&categories=restaurants`;
+  }
   axios
-    .get(
-      'https://api.yelp.com/v3/businesses/search?location=SYDNEY&categories=restaurants&limit=15',
-      {
-        headers: {
-          Authorization:
-            'Bearer sOETYfHBSv8BY_SKA8Bjf5cqtOfm0IGmke-ROchPULdGYBoyyFQaQMX9Qzo6ds2ex7oqehYJoVwzSmWTS0ytJZ6HzjpmSG8oBCp_PMrKu3wgRUeRoKNuyiJu043hZXYx',
-        },
-      }
-    )
+    .get(LINKSEARCH, {
+      headers: {
+        Authorization: process.env.API_KEY_YEL,
+      },
+    })
     .then((response) => {
       const restaurants = response.data.businesses.map((restaurant) => ({
         name: restaurant.name,

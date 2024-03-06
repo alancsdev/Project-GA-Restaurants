@@ -16,6 +16,7 @@ async function index(req, res) {
     console.error('Error getting user:', error);
     res.status(500).json({ message: 'Error getting user' });
   }
+  await console.log('localizacao fdp', req.location);
 }
 
 async function orders(req, res) {

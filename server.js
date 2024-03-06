@@ -46,6 +46,19 @@ app.use(
   })
 );
 
+app.post('/location', (req, res) => {
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
+
+  res.locals.location = { latitude, longitude };
+
+  console.log('Latitude:', latitude);
+  console.log('Longitude:', longitude);
+
+  // Send an acknowledgment response if necessary
+  res.sendStatus(200);
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 
