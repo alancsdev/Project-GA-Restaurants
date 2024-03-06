@@ -154,6 +154,10 @@
   letter-spacing: 0.1px;
 }
 
+.address p {
+  margin-top: 0;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -184,17 +188,16 @@ button.btn-order {
 .my-order-details {
   margin: 0 auto;
   width: 91.67%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  padding-bottom: 1rem;
 }
 
 @media only screen and (min-width: 600px) {
   .my-order-details {
     margin: 0 auto;
     width: 77.08%;
-    height: 100%;
     display: flex;
   }
 }

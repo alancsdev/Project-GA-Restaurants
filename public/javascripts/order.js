@@ -102,9 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
           }
           return response.json();
         })
-        .then((data) => {
-          console.log('Order added:', data);
-        })
         .catch((error) => {
           console.error('Error:', error);
         });
