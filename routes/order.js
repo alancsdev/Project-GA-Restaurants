@@ -4,9 +4,9 @@ const router = express.Router();
 const orderController = require('../controllers/orders');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
 
-router.get('/:name', ensureLoggedIn, orderController.index);
-
 router.get('/my-orders', ensureLoggedIn, orderController.orders);
+
+router.get('/:name', ensureLoggedIn, orderController.index);
 
 router.post('/add', ensureLoggedIn, orderController.create);
 

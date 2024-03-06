@@ -10,13 +10,13 @@
 .container {
   width: 100%;
   height: 90.7%;
-  padding: 1.5rem 0 0 0;
+  padding: 0;
 }
 
 .order-details {
   margin: 0 auto;
   width: 91.67%;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -25,7 +25,7 @@
   .order-details {
     margin: 0 auto;
     width: 77.08%;
-    height: 100%;
+    /* height: 100%; */
     display: flex;
   }
 }
@@ -40,6 +40,7 @@
 .menu-list-items {
   border: 1px solid #edeef2;
   border-radius: 16px;
+  overflow: hidden;
 }
 
 #menu-list {
@@ -61,6 +62,15 @@
   align-items: center;
   gap: 1rem;
   padding: 0 10px 0 10px;
+}
+
+#order-list {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 28px;
+  letter-spacing: 0.1px;
 }
 
 #order-list li {
@@ -112,15 +122,6 @@
   width: 15%;
   justify-content: flex-end;
   gap: 1rem;
-}
-
-#order-list {
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 28px;
-  letter-spacing: 0.1px;
 }
 
 .order-items,
@@ -178,4 +179,75 @@ button.btn-order {
   color: #ffffff;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.my-order-details {
+  margin: 0 auto;
+  width: 91.67%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+@media only screen and (min-width: 600px) {
+  .my-order-details {
+    margin: 0 auto;
+    width: 77.08%;
+    height: 100%;
+    display: flex;
+  }
+}
+
+.my-order-details h1 {
+  font-size: 1.5rem;
+}
+
+.my-order-list {
+  margin-top: -1rem;
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.my-order-list li {
+  border-bottom: 1px solid #edeef2;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  margin: 0;
+}
+
+.my-order-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 1rem;
+}
+
+.my-order-list li:nth-child(odd) {
+  background-color: rgb(235, 235, 235);
+}
+
+.my-order-restaurant-name {
+  font-size: 0.8rem;
+}
+
+.my-order-restaurant-name h2 {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.my-order-list li:not(:first-of-type) .my-order-restaurant-name h2 {
+  margin-top: 0;
+}
+
+.my-order-list li:last-child .my-order-total-order p {
+  margin-bottom: 0;
+}
+
+.my-order-items p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.my-order-total-order p {
+  margin-top: 0;
 }

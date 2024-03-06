@@ -1,6 +1,5 @@
 const Order = require('../models/order');
 const User = require('../models/user');
-// const orderScript = require('../public/javascripts/order');
 
 module.exports = {
   index,
@@ -21,9 +20,19 @@ async function index(req, res) {
 
 async function orders(req, res) {
   try {
-    const order = await Order.findOne({ googleId: req.user.googleId });
-    console.log('MINHAS ORDERS', order);
-    // res.render('order/my-orders', { order });
+    const order = await Order.find({ googleId: req.user.googleId });
+
+    order.forEach((order) => {
+      let total = 0;
+
+      order.items.forEach((item) => {
+        total += item.price * item.amount;
+      });
+
+      order.total = total;
+    });
+
+    res.render('order/my-orders', { order });
   } catch (err) {
     console.error('Error getting orders:', error);
     res.status(500).json({ message: 'Error getting orders' });
@@ -43,9 +52,8 @@ async function create(req, res) {
     });
 
     const savedOrder = await newOrder.save();
-
+    res.redirect('/order/my-orders');
     res.status(201).json(savedOrder);
-    // res.redirect('/my-orders');
   } catch (error) {
     console.error('Error adding order:', error);
     res.status(500).json({ message: 'Error adding order' });

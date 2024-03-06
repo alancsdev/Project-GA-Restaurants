@@ -5,13 +5,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const orderItems = [];
 
   const menuItems = [
-    {
-      description: 'Hamburguer Simples',
-      price: 10,
-    },
-    { description: 'Hamburguer Duplo', price: 15 },
-    { description: 'Batata Frita', price: 5 },
-    { description: 'Refrigerante', price: 3 },
+    { description: 'Simple Burger', price: 10 },
+    { description: 'Double Burger', price: 15 },
+    { description: 'Cheeseburger', price: 12 },
+    { description: 'Bacon Burger', price: 13 },
+    { description: 'Veggie Burger', price: 11 },
+    { description: 'Chicken Sandwich', price: 9 },
+    { description: 'Fish Burger', price: 14 },
+    { description: 'Onion Rings', price: 6 },
+    { description: 'Milkshake', price: 7 },
+    { description: 'Salad', price: 8 },
   ];
 
   function addItem(item) {

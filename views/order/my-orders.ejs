@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+  <div class="my-order-details">
+    <h1 class="fonts-format">Your Orders:</h1>
+    <div class="menu-list-items">
+      <ul class="my-order-list fonts-format">
+        <% order.forEach(function(o) { %>
+        <li>
+          <div class="my-order-restaurant-name">
+            <h2><%=o.restaurant%></h2>
+          </div>
+          <div class="my-order-items">
+            <% o.items.forEach(function(o) { %>
+            <p>
+              <%=o.description%> - x <%=o.amount%> - Unit Price: $<%= o.price%>
+            </p>
+            <% }); %>
+          </div>
+          <div class="my-order-total-order">
+            <p>Total: $<%= o.total%></p>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
