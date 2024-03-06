@@ -102,6 +102,9 @@ document.addEventListener('DOMContentLoaded', function () {
           }
           return response.json();
         })
+        .then((data) => {
+          window.location.href = '/order/my-orders';
+        })
         .catch((error) => {
           console.error('Error:', error);
         });

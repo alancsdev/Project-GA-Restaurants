@@ -51,8 +51,8 @@ async function create(req, res) {
       items: items,
     });
 
-    await newOrder.save();
-    res.redirect('/orders/my-orders');
+    const savedOrder = await newOrder.save();
+    res.status(201).json(savedOrder);
   } catch (error) {
     console.error('Error adding order:', error);
     res.status(500).json({ message: 'Error adding order' });
