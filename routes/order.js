@@ -6,6 +6,8 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 router.get('/:name', ensureLoggedIn, orderController.index);
 
+router.get('/my-orders', ensureLoggedIn, orderController.orders);
+
 router.post('/add', ensureLoggedIn, orderController.create);
 
 module.exports = router;
