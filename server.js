@@ -34,6 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use(
   session({
@@ -46,17 +47,9 @@ app.use(
   })
 );
 
-app.post('/location', (req, res) => {
-  const latitude = req.body.latitude;
-  const longitude = req.body.longitude;
-
-  res.locals.location = { latitude, longitude };
-
-  console.log('Latitude:', latitude);
-  console.log('Longitude:', longitude);
-
-  // Send an acknowledgment response if necessary
-  res.sendStatus(200);
+// Reloading the page when get the user location in cookie (main.js)
+app.post('/reload-page', (req, res) => {
+  res.redirect('/');
 });
 
 app.use(passport.initialize());

@@ -1,15 +1,18 @@
 const axios = require('axios');
+
 module.exports = {
   index,
 };
 
 async function index(req, res) {
+  const latitude = req.cookies.latitude;
+  const longitude = req.cookies.longitude;
+  console.log('FDP', latitude, longitude);
   let LINKSEARCH =
     'https://api.yelp.com/v3/businesses/search?location=SYDNEY&categories=restaurants&limit=15';
-  console.log(req.body);
 
-  if (req.body.latitude && req.body.longitude !== undefined) {
-    LINKSEARCH = `https://api.yelp.com/v3/businesses/search?latitude=${req.body.latitude}&longitude=${req.body.longitude}&categories=restaurants`;
+  if (latitude && longitude !== undefined) {
+    LINKSEARCH = `https://api.yelp.com/v3/businesses/search?latitude=${latitude}&longitude=${longitude}&categories=restaurants&limit=15`;
   }
   axios
     .get(LINKSEARCH, {

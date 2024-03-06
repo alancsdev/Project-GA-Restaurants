@@ -24,6 +24,24 @@ function handleItemClick(item) {
 let latitude = undefined;
 let longitude = undefined;
 
+// Get cookie, if there is no cookie, call the getLocation()
+function getLocationFromCookie() {
+  const cookies = document.cookie.split(';');
+
+  cookies.forEach((cookie) => {
+    const [name, value] = cookie.trim().split('=');
+    if (name === 'latitude') {
+      latitude = value;
+    } else if (name === 'longitude') {
+      longitude = value;
+    }
+  });
+
+  if (!latitude && !longitude) {
+    getLocation();
+  }
+}
+
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(sendLocation, handleLocationError);
@@ -32,11 +50,20 @@ function getLocation() {
   }
 }
 
+// Save the location in the cookies and send a request to the server to update the restaurant page
 function sendLocation(position) {
   latitude = position.coords.latitude;
   longitude = position.coords.longitude;
 
-  fetch('/restaurants', {
+  const currentDate = new Date();
+
+  const expirationDate = new Date(
+    currentDate.getTime() + 2 * 24 * 60 * 60 * 1000
+  );
+  document.cookie = `latitude=${latitude}; expires=${expirationDate}; path=/`;
+  document.cookie = `longitude=${longitude}; expires=${expirationDate}; path=/`;
+
+  fetch('/reload-page', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -47,6 +74,7 @@ function sendLocation(position) {
       if (!response.ok) {
         throw new Error('Failed to send location data to server');
       }
+      window.location.reload();
       console.log('Location data sent successfully to server');
     })
     .catch((error) => {
@@ -74,19 +102,4 @@ function handleLocationError(error) {
   }
 }
 
-getLocation();
-
-// let get = 0;
-
-// function checkLocationAndReload() {
-//   if (latitude !== undefined && longitude !== undefined && get === 0) {
-//     location.reload();
-//     get = 1;
-//   }
-// }
-
-// function updateLocation() {
-//   setInterval(checkLocationAndReload, 1000);
-// }
-
-// updateLocation();
+getLocationFromCookie();
