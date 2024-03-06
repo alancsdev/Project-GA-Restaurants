@@ -7,8 +7,14 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const name = req.params.name;
-  res.render('order/index', { name });
+  try {
+    const user = await User.findOne({ googleId: req.user.googleId });
+    const name = req.params.name;
+    res.render('order/index', { name, user });
+  } catch (err) {
+    console.error('Error getting user:', error);
+    res.status(500).json({ message: 'Error getting user' });
+  }
 }
 
 async function create(req, res) {
@@ -16,9 +22,9 @@ async function create(req, res) {
     const user = await User.findOne({ googleId: req.user.googleId })
       .select('googleId')
       .lean();
-
     const items = req.body.orderItems;
     const newOrder = new Order({
+      restaurant: req.body.restaurantName,
       googleId: user.googleId,
       items: items,
     });
@@ -27,7 +33,7 @@ async function create(req, res) {
 
     res.status(201).json(savedOrder);
   } catch (error) {
-    console.error('Erro ao adicionar pedido:', error);
-    res.status(500).json({ message: 'Erro ao adicionar pedido' });
+    console.error('Error adding order:', error);
+    res.status(500).json({ message: 'Error adding order' });
   }
 }

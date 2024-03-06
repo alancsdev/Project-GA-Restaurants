@@ -7,9 +7,15 @@ const orderItemSchema = new Schema({
   price: { type: Number, required: true },
 });
 
-const orderSchema = new Schema({
-  googleId: { type: String, required: true },
-  items: [orderItemSchema],
-});
+const orderSchema = new Schema(
+  {
+    restaurant: { type: String, required: true },
+    googleId: { type: String, required: true },
+    items: [orderItemSchema],
+  },
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model('Order', orderSchema);

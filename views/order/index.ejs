@@ -2,18 +2,20 @@
 
 <div class="container">
   <div class="order-details">
-    <h2 class="fonts-format">Menu - <%= name%></h2>
+    <h2 class="fonts-format">Menu - <span id="nameRestaurant"><%= name%></span></h2>
     <div class="menu-list-items">
       <ul id="menu-list" class="fonts-format">
-        <!-- Aqui serão gerados os itens do menu dinamicamente -->
       </ul>
       <form>
-      <div class="pedido">
+      <div class="order-items">
         <h2 class="fonts-format">Your order:</h2>
-        <ul id="order-list">
-          <!-- Aqui serão mostrados os itens adicionados ao pedido -->
+        <ul id="order-list">  
         </ul>
         <p>Total: $<span id="total">0</span></p>
+      </div>
+      <div class="address">
+        <h2 class="fonts-format">Address:</h2>
+        <p><%=user.address%></p>
       </div>
       <button id="btn-submit-order" type="submit" class="btn-order">Order</button>
     </form>

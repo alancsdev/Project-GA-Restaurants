@@ -57,8 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const totalAtual = parseFloat(totalSpan.textContent);
     totalSpan.textContent = (totalAtual + item.price).toFixed(2);
-
-    console.log(orderItems);
   }
 
   function removeItem(description, price) {
@@ -106,6 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  const restaurantName = document.getElementById('nameRestaurant').textContent;
+
   document
     .getElementById('btn-submit-order')
     .addEventListener('click', function () {
@@ -114,19 +114,19 @@ document.addEventListener('DOMContentLoaded', function () {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ orderItems }),
+        body: JSON.stringify({ orderItems, restaurantName }),
       })
         .then((response) => {
           if (!response.ok) {
-            throw new Error('Erro ao adicionar pedido');
+            throw new Error('Error adding the order');
           }
           return response.json();
         })
         .then((data) => {
-          console.log('Pedido adicionado com sucesso:', data);
+          console.log('Order added:', data);
         })
         .catch((error) => {
-          console.error('Erro:', error);
+          console.error('Error:', error);
         });
     });
 });
