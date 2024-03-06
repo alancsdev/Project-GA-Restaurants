@@ -85,28 +85,48 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   const restaurantName = document.getElementById('nameRestaurant').textContent;
-
+  const address = document.getElementById('address-detail');
+  let auxAddress = true;
+  let auxOrder = true;
   document
     .getElementById('btn-submit-order')
-    .addEventListener('click', function () {
-      fetch('/order/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ orderItems, restaurantName }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Error adding the order');
-          }
-          return response.json();
+    .addEventListener('click', function (event) {
+      if (address.textContent.trim() === '') {
+        if (auxAddress) {
+          const newP = document.createElement('p');
+          newP.textContent = 'Add an address to your registration';
+          address.insertAdjacentElement('afterend', newP);
+          auxAddress = !auxAddress;
+        }
+        event.preventDefault();
+      } else if (orderItems.length === 0) {
+        if (auxOrder) {
+          const newP = document.createElement('p');
+          newP.textContent = 'Add items to your order';
+          address.insertAdjacentElement('afterend', newP);
+          auxAddress = !auxAddress;
+        }
+        event.preventDefault();
+      } else {
+        fetch('/order/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ orderItems, restaurantName }),
         })
-        .then((data) => {
-          window.location.href = '/order/my-orders';
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Error adding the order');
+            }
+            return response.json();
+          })
+          .then((data) => {
+            window.location.href = '/order/my-orders';
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      }
     });
 });

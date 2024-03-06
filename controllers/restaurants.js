@@ -7,7 +7,6 @@ module.exports = {
 async function index(req, res) {
   const latitude = req.cookies.latitude;
   const longitude = req.cookies.longitude;
-  console.log('FDP', latitude, longitude);
   let LINKSEARCH =
     'https://api.yelp.com/v3/businesses/search?location=SYDNEY&categories=restaurants&limit=15';
 
