@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         event.preventDefault();
       } else {
+        event.preventDefault();
         fetch('/order/add', {
           method: 'POST',
           headers: {
