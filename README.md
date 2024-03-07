@@ -1,4 +1,4 @@
-#! Hello! 👋
+# !Hello! 👋
 
 # If you wanna check my project just click [here](https://project-ga-restaurants.onrender.com/)
 
@@ -34,4 +34,8 @@ The project is consuming the Yelp API to get data of restaurants close to the us
 
 # Screenshot:
 
-![myGame](https://i.ibb.co/LSGGSHW/image.png)
+![myApp](https://i.ibb.co/5xp7qft/Captura-de-Tela-2024-03-07-a-s-12-46-08.png)
+![myApp](https://i.ibb.co/7YNXNqc/Captura-de-Tela-2024-03-07-a-s-12-46-46.png)
+![myApp](https://i.ibb.co/NrrkY4V/Captura-de-Tela-2024-03-07-a-s-12-47-32.png)
+![myApp](https://i.ibb.co/8X97kLw/Captura-de-Tela-2024-03-07-a-s-12-48-10.png)
+![myApp](https://i.ibb.co/5MTZ6sn/Captura-de-Tela-2024-03-07-a-s-12-48-42.png)
