@@ -30,6 +30,7 @@ The project is consuming the Yelp API to get data of restaurants close to the us
   <img align="center" alt="Alan-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
   <img align="center" alt="Alan-Express" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg">
   <img align="center" alt="Alan-Node" height="30" width="40" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg">
+  <img align="center" alt="Alan-MongoDB" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg">
 </div>
 
 # Screenshot:
